@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CRAFTDEFINE — Inspired by Nature</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div class="flow f1"></div>
+<div class="flow f2"></div>
+<div class="flow f3"></div>
+
+<div id="toast"></div>
+
+<!-- LOGIN -->
+<section id="login" class="login-page">
+
+  <div class="login-card">
+
+    <div class="seal">✦</div>
+
+    <h1>CRAFTDEFINE</h1>
+
+    <small class="tag">INSPIRED BY NATURE</small>
+
+    <p>
+      A curated world of handmade art & craft.
+    </p>
+
+    <form id="loginForm">
+
+      <label for="loginEmail">Email</label>
+
+      <input
+        id="loginEmail"
+        type="email"
+        placeholder="Enter your email"
+        autocomplete="email"
+        required
+      >
+
+      <label for="loginPassword">Password</label>
+
+      <input
+        id="loginPassword"
+        type="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+        minlength="4"
+        required
+      >
+
+      <button class="gold" type="submit">
+        ENTER CRAFTDEFINE
+      </button>
+
+      <div id="loginError" class="login-error"></div>
+
+    </form>
+
+    <small>
+      Prototype login — any valid email/password works.
+    </small>
+
+  </div>
+
+</section>
+
+
+<!-- MAIN WEBSITE -->
+<section id="app" class="hidden">
+
+  <div class="offer">
+    GET FLAT 5% OFF SITEWIDE ON PREPAID ORDERS ONLY
+  </div>
+
+  <header>
+
+    <button class="icon" id="menu">☰</button>
+
+    <div class="brand" onclick="home()">
+
+      <div class="seal sm">✦</div>
+
+      <div>
+        <b>CRAFTDEFINE</b>
+        <small>INSPIRED BY NATURE</small>
+      </div>
+
+    </div>
+
+    <div>
+
+      <button class="icon" id="searchBtn">⌕</button>
+
+      <button class="icon" id="wishBtn">
+        ♡ <i id="wishCount">0</i>
+      </button>
+
+      <button class="icon" id="cartBtn">
+        🛒 <i id="cartCount">0</i>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- SEARCH -->
+
+  <div id="searchBox" class="search hidden">
+
+    <input
+      id="search"
+      type="text"
+      placeholder="Search mandala, wall art, brass art..."
+    >
+
+  </div>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div>
+
+        <div class="eyebrow">
+          HANDCRAFTED • TIMELESS • ARTISTIC
+        </div>
+
+        <h2>
+          Art that gives<br>
+          <em>your space</em> a soul.
+        </h2>
+
+        <p>
+          Discover handcrafted mandala art, wall accents and timeless
+          pieces inspired by nature.
+        </p>
+
+        <button class="dark" onclick="goProducts()">
+          EXPLORE COLLECTION
+        </button>
+
+      </div>
+
+
+      <div class="hero-art">
+
+        <div class="mandala">✺</div>
+
+        <div class="hero-copy">
+          HANDCRAFTED<br>
+          <b>MANDALA</b>
+        </div>
+
+        <div class="discount">
+          50%
+          <small>OFF</small>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="section">
+
+      <div class="title">
+        <span></span>
+        <h2>Explore Art & Craft</h2>
+        <span></span>
+      </div>
+
+      <div class="chips">
+
+        <button class="chip active" data-cat="All">
+          All
+        </button>
+
+        <button class="chip" data-cat="Mandala">
+          Mandala Art
+        </button>
+
+        <button class="chip" data-cat="Wall Decor">
+          Wall Decor
+        </button>
+
+        <button class="chip" data-cat="Brass Art">
+          Brass Art
+        </button>
+
+        <button class="chip" data-cat="Handmade">
+          Handmade
+        </button>
+
+        <button class="chip" data-cat="Paintings">
+          Paintings
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section class="section" id="products">
+
+      <div class="title">
+        <span></span>
+        <h2>Featured Collection</h2>
+        <span></span>
+      </div>
+
+      <div id="grid" class="grid"></div>
+
+    </section>
+
+
+    <!-- CUSTOM -->
+
+    <section class="custom">
+
+      <div>
+
+        <div class="eyebrow">
+          MAKE IT YOURS
+        </div>
+
+        <h2>
+          Personalize<br>
+          your mandala.
+        </h2>
+
+        <p>
+          Choose your size, finish and add a special note for
+          your handcrafted piece.
+        </p>
+
+        <button class="gold" onclick="openProduct(1)">
+          CUSTOMIZE YOUR ART
+        </button>
+
+      </div>
+
+      <div class="custom-art">
+        ✺
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <b>CRAFTDEFINE</b>
+
+    <small>
+      INSPIRED BY NATURE
+    </small>
+
+    <p>
+      Handcrafted art for thoughtful spaces.
+    </p>
+
+  </footer>
+
+</section>
+
+
+<!-- PRODUCT MODAL -->
+
+<div id="productModal" class="overlay hidden">
+
+  <div class="modal">
+
+    <button class="x" onclick="closeM('productModal')">
+      ×
+    </button>
+
+    <div id="detail"></div>
+
+  </div>
+
+</div>
+
+
+<!-- CART -->
+
+<aside id="cart" class="drawer">
+
+  <div class="drawer-head">
+
+    <h2>Your Cart</h2>
+
+    <button
+      class="x static"
+      onclick="closeCart()">
+      ×
+    </button>
+
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="drawer-bottom">
+
+    <div class="total">
+
+      <span>Total</span>
+
+      <b id="total">
+        ₹0
+      </b>
+
+    </div>
+
+    <button
+      class="gold full"
+      onclick="checkout()">
+      PROCEED TO CHECKOUT
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- CHECKOUT -->
+
+<div id="checkoutModal" class="overlay hidden">
+
+  <div class="modal checkout">
+
+    <button
+      class="x"
+      onclick="closeM('checkoutModal')">
+      ×
+    </button>
+
+    <div class="eyebrow">
+      SECURE CHECKOUT
+    </div>
+
+    <h2>
+      Complete your order
+    </h2>
+
+    <form id="checkoutForm">
+
+      <div class="two">
+
+        <div>
+
+          <label for="name">
+            Full Name
+          </label>
+
+          <input id="name" required>
+
+        </div>
+
+        <div>
+
+          <label for="phone">
+            Mobile Number
+          </label>
+
+          <input id="phone" required>
+
+        </div>
+
+      </div>
+
+
+      <label for="email">
+        Email
+      </label>
+
+      <input
+        id="email"
+        type="email"
+        required
+      >
+
+
+      <label for="address">
+        Delivery Address
+      </label>
+
+      <textarea
+        id="address"
+        rows="3"
+        required
+      ></textarea>
+
+
+      <div class="two">
+
+        <div>
+
+          <label for="city">
+            City
+          </label>
+
+          <input id="city" required>
+
+        </div>
+
+        <div>
+
+          <label for="pin">
+            Pincode
+          </label>
+
+          <input id="pin" required>
+
+        </div>
+
+      </div>
+
+
+      <label for="payment">
+        Payment Method
+      </label>
+
+      <select id="payment">
+
+        <option>
+          Cash on Delivery
+        </option>
+
+        <option>
+          Prepaid — 5% OFF
+        </option>
+
+      </select>
+
+
+      <div class="checkout-total">
+
+        <span>
+          Order Total
+        </span>
+
+        <b id="checkoutTotal">
+          ₹0
+        </b>
+
+      </div>
+
+
+      <button
+        class="gold full"
+        type="submit">
+        PLACE ORDER
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div id="success" class="overlay hidden">
+
+  <div class="modal success">
+
+    <div class="check">
+      ✓
+    </div>
+
+    <div class="eyebrow">
+      ORDER CONFIRMED
+    </div>
+
+    <h2>
+      Thank you for choosing art.
+    </h2>
+
+    <p>
+      Your handcrafted piece is now on its way to becoming
+      part of your space.
+    </p>
+
+    <div id="orderId" class="order-id"></div>
+
+    <button
+      class="dark"
+      onclick="closeM('success');home()">
+      CONTINUE SHOPPING
+    </button>
+
+  </div>
+
+</div>
+
+
+<script src="./script.js"></script>
+
+</body>
+</html>
